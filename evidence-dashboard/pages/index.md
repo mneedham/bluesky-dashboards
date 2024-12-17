@@ -2,7 +2,14 @@
 title: BlueSky Dashboard
 ---
 
-Bluesky is a decentralized social media platform initiated by Twitter co-founder Jack Dorsey. It operates on a protocol called the Authenticated Transfer Protocol (ATP), aiming to give users more control over their data and online identity while promoting interoperability between different social networks.
+## What is BlueSky?
+
+Bluesky is a decentralized social media platform initiated by Twitter co-founder Jack Dorsey. 
+It operates on a protocol called the Authenticated Transfer Protocol (ATP), aiming to give users more control over their data and online identity while promoting interoperability between different social networks.
+
+We've loaded the data from [jetstream](https://github.com/bluesky-social/jetstream) into ClickHouse and then queried it to create this dashboard.
+
+
 
 ## Total messages
 
