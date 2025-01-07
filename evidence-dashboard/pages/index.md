@@ -135,12 +135,17 @@ LIMIT 20
 ```
 
 
-<BarChart 
-    data={posts_per_language}
-    x=language
-    y=posts
-    swapXY=true
-    yFmt=num0    
-    sort=false
-    yLog=true
+<ECharts config={
+    {
+        tooltip: {
+            formatter: '{b}: {c} ({d}%)'
+        },
+        series: [
+        {
+          type: 'pie',
+          data: [...posts_per_language],
+        }
+      ]
+      }
+    }
 />
