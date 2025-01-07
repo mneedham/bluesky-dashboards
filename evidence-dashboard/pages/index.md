@@ -11,7 +11,7 @@ It operates on a protocol called the Authenticated Transfer Protocol (ATP), aimi
 
 We've loaded the data from [jetstream](https://github.com/bluesky-social/jetstream) into ClickHouse and then queried it to create this dashboard.
 
-## Total messages
+## How much are people using it?
 
 How many messages have been generated so far?
 
@@ -20,10 +20,26 @@ SELECT *
 FROM ClickHouse.total_messages
 ```
 
+```sql messages_last_day
+SELECT *
+FROM ClickHouse.messages_last_day
+```
+
 <BigValue 
+  title="Total events"
   data={total_messages} 
   value=messages
   fmt=num0m
+/>
+
+<BigValue 
+  title="Events in the last 24 hours"
+  data={messages_last_day} 
+  value=last24Hours
+  fmt=num0m
+  comparison=percentChange
+  comparisonFmt=pct1
+  comparisonTitle="24 hour change"
 />
 
 
@@ -40,10 +56,23 @@ FROM ClickHouse.time_of_day
     data={time_of_day}
     x=hour_of_day
     y=count
+    yFmt=num0m
     series=event
->
+/>
 
-</BarChart>
+```sql events_by_day
+SELECT day, count
+FROM ClickHouse.events_by_day
+```
+
+<BarChart 
+    data={events_by_day}
+    x=day
+    yFmt=num0m
+    y=count
+    sort=false
+/>
+
 
 
 ## Post types
